@@ -12,7 +12,7 @@ public class DriverUtils {
 
     public static void createDriver(){
         // Setting path to chromedriver.exe
-        System.setProperty("webdriver.chrome.driver", "src//test//resources//driver//chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src//test//resources//driver//chromedriver");
         // Open the browser
         driver = new ChromeDriver();
 

@@ -6,3 +6,4 @@
 /CucumberReport/
 *.xml
 *.class
+src/test/java/automation/utils/DriverUtils.java
