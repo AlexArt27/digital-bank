@@ -3,6 +3,7 @@ package automation.steps;
 import automation.pages.LoginPage;
 import automation.pages.SignupPage;
 import io.cucumber.java.en.And;
+import java.util.Arrays;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
