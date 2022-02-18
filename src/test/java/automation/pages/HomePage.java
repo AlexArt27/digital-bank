@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HomePage extends BasePage{
+import static org.junit.Assert.*;
+
+public class HomePage extends BasePage {
 
     @FindBy(className = "app_logo")
     WebElement homePageLogo;
@@ -19,19 +21,22 @@ public class HomePage extends BasePage{
     @FindBy(id = "logout_sidebar_link")
     WebElement logoutLink;
 
-    String XPATH_ITEM_LINK = "//div[text()='%s']";
-    String XPATH_ITEM_ADD_TO_CART_BTN ="//div[text()='%s']/ancestor::div[@class='inventory_item_description']//button";
+    @FindBy(xpath = "//li[@class='active']")
+    WebElement welcomeMessage;
 
-    public void verifyPage(){
+    String XPATH_ITEM_LINK = "//div[text()='%s']";
+    String XPATH_ITEM_ADD_TO_CART_BTN = "//div[text()='%s']/ancestor::div[@class='inventory_item_description']//button";
+
+    public void verifyPage() {
 //        Assert.assertTrue("Logo is missing from homepage", homePageLogo.isDisplayed());
-        Assert.assertTrue("Title is missing from homepage", homePageTitle.isDisplayed());
+        assertTrue("Title is missing from homepage", homePageTitle.isDisplayed());
     }
 
-    public void clickOnBurgerMenu(){
+    public void clickOnBurgerMenu() {
         burgerMenu.click();
     }
 
-    public void clickOnLogoutLink(){
+    public void clickOnLogoutLink() {
         logoutLink.click();
     }
 
@@ -43,9 +48,15 @@ public class HomePage extends BasePage{
     }
 
 
-    public void clickonAddToCartForSpecificItem(String itemName) {
+    public void clickOnAddToCartForSpecificItem(String itemName) {
         String loc = String.format(XPATH_ITEM_ADD_TO_CART_BTN, itemName);
         WebElement addToCartBtn = driver.findElement(By.xpath(loc));
         addToCartBtn.click();
+    }
+
+    public void verifyWelcomeMessage(String name) {
+        assertTrue(welcomeMessage.getText().substring(8).equals(name));
+
+
     }
 }
